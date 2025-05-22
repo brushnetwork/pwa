@@ -1,60 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  <!-- Responsive -->
-  <meta charset="utf-8">
-  <meta name="viewport" 
-        content="width=device-width,
-                 initial-scale=1">
-  <meta http-equiv="X-UA-Compatible"
-        content="ie=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Title -->
-  <title>PWA Tutorial</title>
+    <title>BrushNetwork</title>
 
-  <!-- Meta Tags required for
-       Progressive Web App -->
-  <meta name=
-  "apple-mobile-web-app-status-bar" 
-        content="#aa7700">
-  <meta name="theme-color"
-        content="black">
+    <meta name="apple-mobile-web-app-status-bar" content="#333333">
+    <meta name="theme-color" content="black">
 
-  <!-- Manifest File link -->
-  <link rel="manifest"
-        href="manifest.json">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit-icons.min.js"></script>
 </head>
 
 <body>
-  <h1 style="color: green;">
-    GeeksforGeeks</h1>
+    <div class="uk-section uk-section-default">
+        <div class="uk-container uk-container-xlarge">
+            <img class="uk-border-rounded uk-align-center" src="images/icon-512x512.png" width="30%" height="30%"
+                alt="BrushNetwork">
+            <div class="uk-text-center uk-margin-large-bottom">
+                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="icon: linkedin; ratio: 2"></a>
+                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="icon: facebook; ratio: 2"></a>
+                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="icon: youtube; ratio: 2"></a>
+                <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="icon: twitter; ratio: 2"></a>
+                <a href="" class="uk-icon-button" uk-icon="icon: instagram; ratio: 2"></a>
+            </div>
+        </div>
+        <div class="uk-container uk-container-xsmall">
+            <ul class="uk-text-center" uk-accordion>
+                <li>
+                    <a class="uk-accordion-title uk-text-bold uk-text-large" href>vCard</a>
+                    <div class="uk-accordion-content">
+                        <img class="uk-align-center" src="images/vCard.svg" width="100%" height="100%" alt="vCard">
+                    </div>
+                </li>
+                <li>
+                    <a class="uk-accordion-title uk-text-bold uk-text-large" href>Facebook Messenger</a>
+                    <div class="uk-accordion-content">
+                        <img class="uk-align-center" src="images/Messenger.svg" width="100%" height="100%"
+                            alt="Messenger">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-  
-<p>
-    This is a simple tutorial for
-    creating a PWA application.
-  </p>
 
+    <script>
+        window.addEventListener('load', () => {
+            registerSW();
+        });
 
-  <script>
-    window.addEventListener('load', () => {
-      registerSW();
-    });
-
-    // Register the Service Worker
-    async function registerSW() {
-      if ('serviceWorker' in navigator) {
-        try {
-          await navigator
-                .serviceWorker
-                .register('serviceworker.js');
+        // Register the Service Worker
+        async function registerSW() {
+            if ('serviceWorker' in navigator) {
+                try {
+                    await navigator
+                        .serviceWorker
+                        .register('serviceworker.js');
+                }
+                catch (e) {
+                    console.log('SW registration failed');
+                }
+            }
         }
-        catch (e) {
-          console.log('SW registration failed');
-        }
-      }
-    }
- </script>
+    </script>
 </body>
+
 </html>
