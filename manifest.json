@@ -1,6 +1,6 @@
 {
-    "name":"PWA Tutorial",
-    "short_name":"PWA",
+    "name":"BrushNetwork",
+    "short_name":"BrushNetwork",
     "start_url":"index.html",
     "display":"standalone",
     "background_color":"#333333",
