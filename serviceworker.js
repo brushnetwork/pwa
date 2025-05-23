@@ -1,6 +1,3 @@
-if (location.origin !== 'https://www.brushnetwork.com/pwa') {
-  self.close());
-}
 var staticCacheName = "pwa";
 
 self.addEventListener("install", function (e) {
