@@ -6,7 +6,7 @@
     "background_color":"#333333",
     "theme_color":"black",
     "scope": ".",
-    "description":"This is a PWA tutorial.",
+    "description":"Progressive Web App",
     "icons":[
     {
     "src":"images/icon-192x192.png",                      
