@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <title>BrushNetwork</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="black">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit-icons.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="etobf.js"></script>
+    <script>
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        document.addEventListener("keydown", function (e) {
+            // F12
+            if (e.key === "F12") {
+                e.preventDefault();
+            }
+
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+                (e.ctrlKey && (e.key === "U" || e.key === "S"))
+            ) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+
+<body id="customBgColor">
+    <div class="uk-section uk-height-viewport">
+        <div class="uk-container uk-container-small">
+            <nav class="uk-position-top-right uk-padding-small" uk-dropnav="mode: click">
+                <ul class="uk-subnav">
+                    <li class="uk-active"><a href="" class="uk-icon-link" uk-icon="icon: more-vertical; ratio: 1.5"></a>
+                        <div class="uk-dropdown">
+                            <ul class="uk-nav uk-dropdown-nav">
+                                <li>Customize
+                                    <ul>
+                                        <li><a href="#" onclick="UIkit.modal('#logo').show()">Logo</a></li>
+                                        <li><a href="#" onclick="UIkit.modal('#background').show()">Background</a></li>
+                                        <li><a href="#" onclick="UIkit.modal('#titles').show()">Titles</a></li>
+                                        <li><a href="#" onclick="UIkit.modal('#social').show()">Social Media</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" onclick="toggleFullscreen()">Fullscreen</a></li>
+                                <li><a href="#" onclick="updateServiceWorker()">Update</a></li>
+                                <li><a href="#" onclick="window.close()">Quit</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <img id="appLogo" src="images/logo-light.png" width="30%" alt="Logo" class="uk-align-center uk-margin">
+            <h2 id="themeHeading" class="uk-text-center">Welcome to BrushNetwork</h2>
+            <div class="uk-padding-small" id="qrcode" style="background-color: #fff;"></div>
+            <!-- Pop-Ups -->
+            <div id="logo" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Change Logo</h2>
+                    <div class="uk-margin">
+                        <label>Upload Logo:</label>
+                        <input type="file" id="logoUploader" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <div id="background" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Customize Background</h2>
+                    <div class="uk-margin">
+                        <label>Background Color:</label>
+                        <input type="color" id="bgColorPicker" class="uk-input">
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" onclick="backgroundcolor()">Apply to Save</button>
+                    </div>
+                </div>
+            </div>
+            <div id="titles" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Change Title</h2>
+                    <div class="uk-margin">
+                        <label>Heading Text:</label>
+                        <input type="text" id="customTextInput" class="uk-input" placeholder="Enter heading">
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-primary" onclick="titles()">Apply to Save</button>
+                    </div>
+                </div>
+            </div>
+            <div id="social" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">Change Social Media</h2>
+                    <input type="text" id="socialLink"
+                        placeholder="Enter your URL (e.g., https://linkedin.com/in/yourname)">
+                    <button onclick="generateQRCode()">Generate QR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Logo -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedLogo = localStorage.getItem("customLogo");
+            if (savedLogo) document.getElementById("appLogo").src = savedLogo;
+        });
+        document.getElementById("logoUploader").addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const base64 = event.target.result;
+                    document.getElementById("appLogo").src = base64;
+                    localStorage.setItem("customLogo", base64);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+    <!-- Background Color -->
+    <script>
+        function backgroundcolor() {
+            const bgColor = document.getElementById("bgColorPicker").value;
+
+            if (bgColor) {
+                document.body.style.backgroundColor = bgColor;
+                localStorage.setItem("customBgColor", bgColor);
+            }
+        }
+        window.addEventListener("DOMContentLoaded", () => {
+            const bgColor = localStorage.getItem("customBgColor");
+            if (bgColor) document.body.style.backgroundColor = bgColor;
+        });
+    </script>
+    <!-- Heading -->
+    <script>
+        function titles() {
+            const newText = document.getElementById("customTextInput").value;
+
+            if (newText) {
+                document.getElementById("themeHeading").innerText = newText;
+                localStorage.setItem("customHeading", newText);
+            }
+        }
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedText = localStorage.getItem("customHeading");
+            if (savedText) {
+                document.getElementById("themeHeading").innerText = savedText;
+                document.getElementById("customTextInput").value = savedText;
+            }
+        });
+    </script>
+    <!-- Social Media -->
+    <script>
+        function generateQRCode() {
+            const container = document.getElementById("qrcode");
+            container.innerHTML = ""; // clear old QR
+            const url = document.getElementById("socialLink").value.trim();
+            if (url) {
+                new QRCode(container, {
+                    text: url,
+                    width: 128,
+                    height: 128,
+                });
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        }
+    </script>
+    <!-- Fullscreen -->
+    <script>
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+    </script>
+    <!-- Update -->
+    <script>
+        function updateServiceWorker() {
+            if (navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage("manual-update");
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>
