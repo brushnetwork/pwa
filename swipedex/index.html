@@ -24,10 +24,11 @@
         UIkit.util.on(document, 'beforescroll', function () {
             document.querySelector('html').classList.add('no-snap');
         });
+
         UIkit.util.on(document, 'scrolled', function () {
             setTimeout(() => {
                 document.querySelector('html').classList.remove('no-snap');
-            }, 300);
+            }, 300); // adjust timing as needed
         });
     </script>
     <style>
@@ -38,178 +39,298 @@
 </head>
 
 <body class="uk-height-1-1">
-    <div id="topLeft" class="uk-position-top-left uk-position-small uk-position-fixed">
+    <div class="uk-position-top-right uk-position-small uk-position-absolute">
         <a href="#" uk-scroll class="uk-link-muted">
-            <span class="uk-icon uk-icon-image" style="background-image: url(address-card-solid.svg);"></span>
+            <span class="sd-menu uk-icon uk-icon-image"
+                uk-scrollspy="cls:uk-animation-slide-top; repeat: true; delay: 300"
+                style="background-image: url(dots-vertical-svgrepo-com.svg);"></span>
         </a>
     </div>
-    <div id="topRight" class="uk-position-top-right uk-position-small uk-position-fixed">
-        <a href="#" uk-scroll class="uk-link-muted">
-            <span class="uk-icon uk-icon-image" style="background-image: url(address-card-solid.svg);"></span>
-        </a>
-    </div>
-
-    <div id="1"
+    <div id="swiper"
         class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
         uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
         <div class="uk-container uk-container-large">
-            <div class="uk-child-width-1-3 uk-position-center uk-text-center uk-grid-collapse" uk-grid>
-                <div><a href="#1" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(contact-phonebook-support-svgrepo-com.svg);"></span>
-                    </a></div>
-                <div><a href="#2" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#3" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#4" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#5" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#6" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#7" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#8" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
-                <div><a href="#9" uk-scroll>
-                        <span class="uk-icon uk-icon-image"
-                            style="background-image: url(address-card-solid.svg);"></span>
-                    </a></div>
+            <div class="uk-position-center uk-text-center uk-grid-collapse" uk-grid>
+                <div class="uk-width-auto@s uk-margin-auto-vertical">
+                    <img class="uk-padding" src="Bn2024.png" width="300" height="300">
+                </div>
+                <div class="uk-width-expand@s uk-margin-auto-vertical">
+                    <div class="uk-child-width-1-4 uk-padding-large uk-grid-collapse" uk-grid>
+                        <div><a href="#1" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(contact-book-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#2" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(messenger-fill-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#3" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(email-envelope-button-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#4" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(mobile-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#5" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(location-pin-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#6" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(sms-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#7" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(linkedin-rounded-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#8" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(fiverr-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#9" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(youtube-168-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#10" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(facebook-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#11" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(instagram-167-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#12" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(tiktok-svgrepo-com.svg);"></span>
+                            </a></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="2"
-        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
+    <div id="1"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
         uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
         <div class="uk-container uk-container-large">
+            <div class="uk-position-center uk-text-center">
+                <h1>vCard</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <div uk-lightbox>
+                    <a class="uk-button uk-button-default" href="vCard.svg">Click 2 Scan QrCode</a>
+                </div>
+            </div>
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="2"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+            <div class="uk-position-center uk-text-center">
+                <h1>Messenger</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <div uk-lightbox>
+                    <a class="uk-button uk-button-default" href="Messenger.svg">Click 2 Scan QrCode</a>
+                </div>
+            </div>
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
         </div>
     </div>
     <div id="3"
-        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
-        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
         <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
         </div>
     </div>
     <div id="4"
-        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
-        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
         <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
         </div>
     </div>
     <div id="5"
-        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
-        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
         <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
         </div>
     </div>
     <div id="6"
-        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
-        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
         <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
         </div>
     </div>
-    <div id="back2top" class="uk-position-bottom-right uk-position-small uk-position-fixed">
-        <a href="#" uk-scroll class="uk-totop">
-            <span class="uk-icon uk-icon-image" style="background-image: url(address-card-solid.svg);"></span>
-        </a>
+    <div id="7"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
     </div>
-    <style>
-        #back2top.uk-hidden {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-    </style>
-    <style>
-        .visible-animate {
-            display: block !important;
-        }
-    </style>
+    <div id="8"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
 
-    <script>
-        function animateShow(element, animationClass, delay = 0) {
-            setTimeout(() => {
-                element.classList.add('visible-animate', animationClass);
-                element.classList.remove('uk-hidden');
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
-                setTimeout(() => {
-                    element.classList.remove(animationClass);
-                }, 600);
-            }, delay);
-        }
+        </div>
+    </div>
+    <div id="9"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
 
-        function hideElement(element) {
-            element.classList.remove('visible-animate');
-            element.classList.add('uk-hidden');
-        }
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
-        function toggleUIButtonsVisibility() {
-            const toTop = document.getElementById("back2top");
-            const dialer = document.getElementById("1");
-            const rect1 = dialer.getBoundingClientRect();
-            const isDialer1Visible = rect1.bottom > 0;
+        </div>
+    </div>
+    <div id="10"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
 
-            if (isDialer1Visible) {
-                hideElement(toTop);
-            } else {
-                animateShow(toTop, 'uk-animation-slide-bottom-small');
-            }
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
-            const topLeft = document.getElementById("topLeft");
-            const topRight = document.getElementById("topRight");
-            const section2 = document.getElementById("2");
-            const section2Rect = section2.getBoundingClientRect();
-            const isSection2Visible = section2Rect.top < window.innerHeight && section2Rect.bottom > 0;
+        </div>
+    </div>
+    <div id="11"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
 
-            if (isSection2Visible || section2Rect.top < 0) {
-                hideElement(topLeft);
-                hideElement(topRight);
-            } else {
-                animateShow(topLeft, 'uk-animation-slide-top-small', 0);
-                animateShow(topRight, 'uk-animation-slide-top-small', 200);
-            }
-        }
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Remove uk-hidden so animation can show them on load
-            const topLeft = document.getElementById("topLeft");
-            const topRight = document.getElementById("topRight");
-            const toTop = document.getElementById("back2top");
+        </div>
+    </div>
+    <div id="12"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
 
-            topLeft.classList.remove('uk-hidden');
-            topRight.classList.remove('uk-hidden');
-            toTop.classList.remove('uk-hidden');
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
 
-            toggleUIButtonsVisibility();
-        });
-
-        document.addEventListener("scroll", toggleUIButtonsVisibility);
-    </script>
-
+        </div>
+    </div>
 
     <script>
         function setResponsiveCustomIconSizes() {
-            const customIcons = document.querySelectorAll('.uk-icon-image');
+            const customIcons = document.querySelectorAll('.sd-icon');
             const defaultSizes = {
                 xs: 20,
                 s: 27.5,
@@ -217,6 +338,7 @@
                 l: 42.5,
                 xl: 50
             };
+            const defaultMarginTop = '15px';
             const defaultMarginBottom = '15px';
             function getSize(el) {
                 const width = window.innerWidth;
@@ -233,6 +355,7 @@
                     el.style.height = `${size}px`;
                     el.style.backgroundSize = 'contain';
                     el.style.display = 'inline-block';
+                    el.style.marginTop = defaultMarginTop;
                     el.style.marginBottom = defaultMarginBottom;
                 });
             }
