@@ -40,7 +40,7 @@
 
 <body class="uk-height-1-1">
     <div class="uk-position-top-right uk-position-small uk-position-absolute">
-        <a href="#" uk-scroll class="uk-link-muted">
+        <a href="#" onclick="toggleFullscreen()" class="uk-link-muted">
             <span class="sd-menu uk-icon uk-icon-image"
                 uk-scrollspy="cls:uk-animation-slide-top; repeat: true; delay: 300"
                 style="background-image: url(dots-vertical-svgrepo-com.svg);"></span>
@@ -327,7 +327,15 @@
 
         </div>
     </div>
-
+    <script>
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+    </script>
     <script>
         function setResponsiveCustomIconSizes() {
             const customIcons = document.querySelectorAll('.sd-icon');
