@@ -3,73 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PWA Contact Exchange</title>
-  <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <title>Contact Exchange PWA</title>
+
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.13/dist/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.13/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.13/dist/js/uikit-icons.min.js"></script>
+
+  <!-- QR Code + Scanner + LocalForage -->
+  <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/minified/html5-qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
   <style>
-    body { font-family: sans-serif; margin: 20px; }
-    .contact-card { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 10px 0; }
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 100%;
+      height: 300px;
+      background: #000;
+    }
+
+    .contact-card {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    #qrcode {
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      background: #fafafa;
+    }
   </style>
 </head>
 <body>
-  <h2>My Contact QR Code</h2>
+
+  <!-- QR Code Scanner -->
+  <div id="reader"></div>
+
+  <!-- Contact List -->
+  <div class="uk-container uk-padding-small">
+    <h3 class="uk-heading-line"><span>My Contacts</span></h3>
+    <div id="contact-list">Loading contacts...</div>
+  </div>
+
+  <!-- My Contact QR Code -->
   <div id="qrcode"></div>
 
-  <h2>Scan a Contact</h2>
-  <div id="reader" style="width: 300px"></div>
-
-  <h2>My Contacts</h2>
-  <button onclick="listAllContacts()">Show My Contacts</button>
-  <div id="contact-list"></div>
-<script>
-    const myContact = {name:"Jane Doe", email:"jane@example.com", phone:"+1234567890"};
-
-    document.getElementById('qrcode').innerHTML = "";
-
-    new QRCode(document.getElementById("qrcode"), {
-      text: JSON.stringify(myContact),
-      width: 200,
-      height: 200,
-      colorDark : "#000000",
-      colorLight : "#ffffff",
-      correctLevel : QRCode.CorrectLevel.H
-    });
-  </script>
   <script>
+    const myContact = {
+      name: "Zapanta Lawod",
+      email: "zapantalawod@gmail.com",
+      phone: "+0987 2446789",
+      website: "https://zapantalawod.com",
+      map: "Zapanta Lawod Office, Cebu City"
+    };
 
-    // 2. Set up QR scanner to read contact data
+    // Generate My QR Code
+    QRCode.toCanvas(JSON.stringify(myContact), { width: 200 }, (err, canvas) => {
+      if (!err) {
+        document.getElementById("qrcode").innerHTML = `
+          <h4 class="uk-text-center">My Contact QR</h4>
+        `;
+        document.getElementById("qrcode").appendChild(canvas);
+      }
+    });
+
+    // QR Scanner Success Handler
     const onScanSuccess = async (decodedText) => {
       try {
         const contact = JSON.parse(decodedText);
         await localforage.setItem("contact-" + contact.name, contact);
-        alert("Contact saved: " + contact.name);
+        UIkit.notification(`Contact saved: ${contact.name}`, "success");
+        listAllContacts();
       } catch (e) {
-        alert("Invalid QR Code");
+        UIkit.notification("Invalid QR Code", "danger");
       }
     };
 
     new Html5Qrcode("reader").start(
       { facingMode: "environment" },
-      { fps: 10, qrbox: 250 },
+      { fps: 10, qrbox: { width: 250, height: 250 } },
       onScanSuccess
     );
 
-    // 3. Display saved contacts
+    // Display Contact Cards
     async function listAllContacts() {
       const keys = await localforage.keys();
       const contacts = await Promise.all(
         keys.filter(k => k.startsWith("contact-")).map(k => localforage.getItem(k))
       );
+
       const container = document.getElementById("contact-list");
+      if (contacts.length === 0) {
+        container.innerHTML = "<p>No contacts yet.</p>";
+        return;
+      }
+
       container.innerHTML = contacts.map(c => `
-        <div class="contact-card">
-          <strong>${c.name}</strong><br>
-          📧 ${c.email}<br>
-          📱 ${c.phone}
+        <div class="contact-card uk-card uk-card-default uk-card-body" data-name="${c.name}">
+          <h4 class="uk-card-title">${c.name}</h4>
+          <p><span uk-icon="icon: mail"></span> <a href="mailto:${c.email}">${c.email}</a></p>
+          <p><span uk-icon="icon: phone"></span> <a href="tel:${c.phone}">${c.phone}</a></p>
+          <p><span uk-icon="icon: link"></span> <a href="${c.website}" target="_blank">${c.website}</a></p>
+          <p><span uk-icon="icon: location"></span> <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.map)}" target="_blank">Google Maps</a></p>
+          <button class="uk-button uk-button-danger uk-button-small" onclick="deleteContact('${c.name}')">
+            <span uk-icon="icon: trash"></span> Delete
+          </button>
         </div>
       `).join("");
     }
+
+    // Delete Contact
+    async function deleteContact(name) {
+      await localforage.removeItem("contact-" + name);
+      UIkit.notification(`Deleted: ${name}`, "primary");
+      listAllContacts();
+    }
+
+    // Load contacts on startup
+    listAllContacts();
   </script>
 </body>
 </html>
