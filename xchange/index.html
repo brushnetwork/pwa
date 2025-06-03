@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PWA Contact Exchange</title>
+  <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .contact-card { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h2>My Contact QR Code</h2>
+  <div id="qrcode"></div>
 
+  <h2>Scan a Contact</h2>
+  <div id="reader" style="width: 300px"></div>
+
+  <h2>My Contacts</h2>
+  <button onclick="listAllContacts()">Show My Contacts</button>
+  <div id="contact-list"></div>
+<script>
+    const myContact = {name:"Jane Doe", email:"jane@example.com", phone:"+1234567890"};
+
+    document.getElementById('qrcode').innerHTML = "";
+
+    new QRCode(document.getElementById("qrcode"), {
+      text: JSON.stringify(myContact),
+      width: 200,
+      height: 200,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+  </script>
+  <script>
+
+    // 2. Set up QR scanner to read contact data
+    const onScanSuccess = async (decodedText) => {
+      try {
+        const contact = JSON.parse(decodedText);
+        await localforage.setItem("contact-" + contact.name, contact);
+        alert("Contact saved: " + contact.name);
+      } catch (e) {
+        alert("Invalid QR Code");
+      }
+    };
+
+    new Html5Qrcode("reader").start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: 250 },
+      onScanSuccess
+    );
+
+    // 3. Display saved contacts
+    async function listAllContacts() {
+      const keys = await localforage.keys();
+      const contacts = await Promise.all(
+        keys.filter(k => k.startsWith("contact-")).map(k => localforage.getItem(k))
+      );
+      const container = document.getElementById("contact-list");
+      container.innerHTML = contacts.map(c => `
+        <div class="contact-card">
+          <strong>${c.name}</strong><br>
+          📧 ${c.email}<br>
+          📱 ${c.phone}
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
