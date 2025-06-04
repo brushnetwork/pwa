@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="uk-height-1-1">
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.7/dist/js/uikit-icons.min.js"></script>
+    <style>
+        html {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .uk-section {
+            scroll-snap-align: start;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        UIkit.util.on(document, 'beforescroll', function () {
+            document.querySelector('html').classList.add('no-snap');
+        });
+
+        UIkit.util.on(document, 'scrolled', function () {
+            setTimeout(() => {
+                document.querySelector('html').classList.remove('no-snap');
+            }, 300); // adjust timing as needed
+        });
+    </script>
+    <style>
+        html.no-snap {
+            scroll-snap-type: none !important;
+        }
+    </style>
+</head>
+
+<body class="uk-height-1-1">
+    <div class="uk-position-top-right uk-position-small uk-position-absolute">
+        <a href="#" onclick="toggleFullscreen()" class="uk-link-muted">
+            <span class="sd-menu uk-icon uk-icon-image"
+                uk-scrollspy="cls:uk-animation-slide-top; repeat: true; delay: 300"
+                style="background-image: url(dots-vertical-svgrepo-com.svg);"></span>
+        </a>
+    </div>
+    <div id="swiper"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+            <div class="uk-position-center uk-text-center uk-grid-collapse" uk-grid>
+                <div class="uk-width-auto@s uk-margin-auto-vertical">
+                    <img class="uk-padding" src="Bn2024.png" width="350" height="350"
+                        style="background-color: rgb(152, 15, 231);">
+                </div>
+                <div class="uk-width-expand@s uk-margin-auto-vertical">
+                    <div class="uk-child-width-1-4 uk-grid-small uk-padding-small"
+                        style="background-color: rgb(97, 165, 42);" uk-grid>
+                        <div><a href="#1" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(contact-book-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#2" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(messenger-fill-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#3" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(email-envelope-button-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#4" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(mobile-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#5" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(location-pin-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#6" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(sms-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#7" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(linkedin-rounded-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#8" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(fiverr-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#9" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(youtube-168-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#10" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(facebook-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#11" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(instagram-167-svgrepo-com.svg);"></span>
+                            </a></div>
+                        <div><a href="#12" uk-scroll>
+                                <span class="sd-icon uk-icon uk-icon-image"
+                                    uk-scrollspy="cls:uk-animation-scale-down; repeat: true; delay: 300"
+                                    style="background-image: url(tiktok-svgrepo-com.svg);"></span>
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="1"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
+            <div class="uk-position-center uk-text-center">
+                <h1>vCard</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <div uk-lightbox>
+                    <a class="uk-button uk-button-default" href="vCard.svg">Click 2 Scan QrCode</a>
+                </div>
+            </div>
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="2"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+            <div class="uk-position-center uk-text-center">
+                <h1>Messenger</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <div uk-lightbox>
+                    <a class="uk-button uk-button-default" href="Messenger.svg">Click 2 Scan QrCode</a>
+                </div>
+            </div>
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="3"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="4"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="5"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="6"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="7"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="8"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="9"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="10"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="humanoid-8722271_1920.png" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="11"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-7977960_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div id="12"
+        class="uk-section uk-height-1-1 uk-background-cover uk-background-blend-multiply uk-background-secondary uk-light uk-position-relative"
+        uk-parallax="bgy: -300" data-src="ai-generated-9140459_1920.jpg" uk-img>
+        <div class="uk-container uk-container-large">
+
+            <div class="uk-position-center" uk-lightbox>
+                <a class="uk-button uk-button-default" href="https://www.youtube.com/watch?v=EEXI6r08908"
+                    data-caption="YouTube">Introducing: Bolt & Bolt-M</a>
+                <a class="uk-button uk-button-default" href="https://www.youtube.com/watch?v=FvxGaGb-Rmk"
+                    data-caption="YouTube">Tesla Model Y Mini</a>
+                <a class="uk-button uk-button-default"
+                    href="https://www.google.com/maps/place/BrushNetwork/@10.694158,122.4789801,763m/data=!3m2!1e3!4b1!4m6!3m5!1s0x33aef0816aaaabf1:0x6e85084ca1db9f51!8m2!3d10.6941527!4d122.481555!16s%2Fg%2F11b6j0b_nb?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D"
+                    data-caption="Google Maps" data-type="iframe">Google Maps</a>
+            </div>
+
+            <div class="uk-position-bottom-right uk-position-small uk-position-absolute"
+                style="bottom: 15px; right:0px">
+                <a href="" uk-scroll class="uk-totop">
+                    <span class="uk-icon uk-icon-image"
+                        uk-scrollspy="cls:uk-animation-slide-bottom; repeat: true; delay: 500"
+                        style="background-image: url(dots-9-svgrepo-com.svg);"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+    </script>
+    <script>
+        function setResponsiveCustomIconSizes() {
+            const customIcons = document.querySelectorAll('.sd-icon');
+            const defaultSizes = {
+                xs: 20,
+                s: 27.5,
+                m: 35,
+                l: 42.5,
+                xl: 50
+            };
+            const defaultMarginTop = '';
+            const defaultMarginBottom = '';
+            function getSize(el) {
+                const width = window.innerWidth;
+                if (width <= 250) return el.dataset.sizeXs || defaultSizes.xs;
+                else if (width <= 350) return el.dataset.sizeS || defaultSizes.s;
+                else if (width <= 450) return el.dataset.sizeM || defaultSizes.m;
+                else if (width <= 550) return el.dataset.sizeL || defaultSizes.l;
+                else return el.dataset.sizeXl || defaultSizes.xl;
+            }
+            function updateSizes() {
+                customIcons.forEach(el => {
+                    const size = getSize(el);
+                    el.style.width = `${size}px`;
+                    el.style.height = `${size}px`;
+                    el.style.backgroundSize = 'contain';
+                    el.style.display = 'inline-block';
+                    el.style.marginTop = defaultMarginTop;
+                    el.style.marginBottom = defaultMarginBottom;
+                });
+            }
+            updateSizes();
+            window.addEventListener('resize', updateSizes);
+        }
+        setResponsiveCustomIconSizes();
+    </script>
+</body>
+
+</html>
