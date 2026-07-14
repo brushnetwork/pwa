@@ -1,3 +1,8 @@
+if (!["swipedex.app", "www.swipedex.app"].includes(self.location.hostname)) {
+    self.registration.unregister().then(() => {
+        console.log("Unauthorized domain. Service worker disabled.");
+    });
+}
 const allowedHosts = [
     "swipedex.app",
     "www.swipedex.app"
