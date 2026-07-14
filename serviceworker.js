@@ -1,8 +1,13 @@
-if (!["swipedex.app", "www.swipedex.app"].includes(self.location.hostname)) {
-    self.registration.unregister().then(() => {
-        console.log("Unauthorized domain. Service worker disabled.");
-    });
-}
+(function initGlobalProtection() {
+    const allowedHosts = ["swipedex.app", "www.swipedex.app"];
+    const isMobileOrTablet = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
+
+    // Hard Domain Guard: Instantly kills the page if hosted elsewhere
+    if (!allowedHosts.includes(window.location.hostname) || !isMobileOrTablet) {
+        document.body.innerHTML = "<h1>Unauthorized Environment</h1>";
+        throw new Error("PWA assets locked.");
+    }
+})();
 const allowedHosts = [
     "swipedex.app",
     "www.swipedex.app"
